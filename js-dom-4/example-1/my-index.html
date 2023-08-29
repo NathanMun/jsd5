@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mini Project 2</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <div>
+        <div class="enterData">
+            <h2>Enter Data</h2>
+            <div>
+                <label>Name:</label>
+                <input type="text" name="name" id="name"/>
+            </div>
+            <div>
+                <label>Age:</label>
+                <input type="number" name="age" id="age"/>
+            </div>
+            <div>
+                <label>Weight:</label>
+                <input type="number" name="weight" id="weight" />
+            </div>
+            <div>           
+                <label>Current Running (Minutes):</label>
+                <input type="number" name="duration" id="duration"/>
+            </div>
+            <button onclick="addData()">Add Data</button>
+        </div>
+        <div>
+            <h2>Entered Data</h2>
+            <table id="dataDisplay">
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Weight</th>
+                    <th>Current Running (Minutes)</th>
+                    <th>Good Running</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function addData() {
+            const inputName = document.querySelector('#name');
+            const inputAge = document.querySelector('#age');
+            const inputWeight = document.querySelector('#weight');
+            const inputDuration = document.querySelector('#duration');
+
+            const intDuration = parseInt(inputDuration.value);
+            // console.log(intDuration, typeof intDuration);  
+            
+            let durationGrade;
+            if (intDuration >= 0 && intDuration <= 30) {
+                durationGrade = "Good";
+            } else if (intDuration >= 31 && intDuration <=60) {
+                durationGrade = "Balance";
+            } else if (intDuration > 60) {
+                durationGrade = "Extreme";
+            } else {
+                durationGrade = "Error";
+            }
+
+
+            const nameDisplay = document.getElementById('nameDisplay');
+            const ageDisplay = document.getElementById('ageDisplay');
+            const weightDisplay = document.getElementById('weightDisplay');
+            const durationDisplay = document.getElementById('durationDisplay');
+
+                
+
+            const dataDisplay = document.querySelector('#dataDisplay');
+            dataDisplay.innerHTML += `<tr>
+                    <td>${inputName.value}</td>
+                    <td>${inputAge.value}</td>
+                    <td>${inputWeight.value}</td>
+                    <td>${inputDuration.value}</td>
+                    <td>${durationGrade}</td>
+                </tr>`
+        }
+    </script>
+    </body>
+</html>
