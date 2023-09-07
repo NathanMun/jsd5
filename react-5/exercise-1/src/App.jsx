@@ -9,9 +9,12 @@ const App = () => {
   const [singleMember, setSingleMember] = useState([]);
 
   useEffect(() => {
-    const getData ______fill the blank here_______ {
-      const response = await axios();
+    const getData = async () => {
+      const response = await axios.get("https://jsd5-mock-backend.onrender.com/members");
       // set member here
+      if (response.status === 200 && response.data) {
+        setMembers(response.data);
+      };     
     };
 
     getData();
@@ -19,9 +22,11 @@ const App = () => {
 
   const getDataById = async (id) => {
     // call axios here
-
+    const response = await axios.get(`https://jsd5-mock-backend.onrender.com/members/${id}`)
     if (response.status === 200 && response.data) {
       // set data here
+      // const data = response.data;
+      setSingleMember({...response.data});
     }
   };
 
@@ -40,6 +45,7 @@ const App = () => {
           />
         ))}
       </div>
+      
       <h1>Single Data by ID</h1>
       <div>
         <select onChange={(ev) => getDataById(ev.target.value)}>

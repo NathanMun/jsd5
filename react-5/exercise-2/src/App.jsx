@@ -8,11 +8,46 @@ const App = () => {
   const [members, setMembers] = useState([]);
 
   // started life cycle here
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get(
+        "https://jsd5-mock-backend.onrender.com/members"
+        );
+      setMembers(response.data);
+    };
 
+    getData();
+  }, []);
   // update here
 
   // create here
+  const createData = async (name, age, weight, status) => {
+    const response = await axios.post(
+      "https://jsd5-mock-backend.onrender.com/members", {
+        name: name,
+        age: age,
+        weight: weight,
+        status: status,
+      }
+    );
 
+    // console.log(response);
+  };
+
+  const updateData = async (id, name, age, weight, status) => {
+    const response = await axios.put(
+      "https://jsd5-mock-backend.onrender.com/members", 
+      {
+        id: id,
+        name: name,
+        age: age,
+        weight: weight,
+        status: status,
+      }
+    );
+
+    // console.log(response);
+  }
   return (
     <div className="container">
       <Form submitHandler={updateData} />

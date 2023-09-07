@@ -2,23 +2,24 @@ import React from "react";
 import "./App.css";
 
 function App() {
-  const temp = 90;
+  const temp = 200;
   return (
     <div id="app">
-      <Header />
+      <Header temperature = {temp} />
       <Content temperature={temp} />
       <Footer />
     </div>
   );
 }
 
-function Header() {
+function Header(props) {
+  const temperature = props.temperature;
   return (
     // Code for Header
     // <Header />
     <header>
       <span>Turn on / off</span>
-      <p>Current Temperature: XXX</p>
+      <p>Current Temperature: {temperature} </p>
     </header>
   );
 }
