@@ -1,31 +1,19 @@
 import React from "react";
 import "./App.css";
 
-// function App() {
-//   return (
-//     <div id="app">
-//       <RegistrationForm />
-//       <DisplayMember />
-//     </div>
-//   );
-// }
-
-class App extends React.Component {
-  render() {
-    return (
-      <div id="app">
+function App() {
+  return (
+    <div id="app">
       <RegistrationForm />
       <DisplayMember />
     </div>
-    );
-  }
+  );
 }
 
 class RegistrationForm extends React.Component {
-    render() {
-      return (
-      // code here
-        <div>
+  render() {
+    return (
+      <div>
         <h1>Registration Form</h1>
         <form id="registrationForm">
           <div class="form-group">
@@ -39,26 +27,24 @@ class RegistrationForm extends React.Component {
           <button type="submit">Register</button>
         </form>
       </div>
-      )
+    );
   }
 }
 
 // create Class DisplayMember here
-
 class DisplayMember extends React.Component {
-  people = [
-    "John Doe (john@example.com)",
-    "Jane Smith (jane@example.com)",
-  ];
-
-  render () {
+  render() {
+    const people = [
+      "John Doe (john@example.com)",
+      "Jane Smith (jane@example.com)",
+    ];
     return (
       <div class="members">
-      <h2>Registered Members</h2>
-      <div class="member">{this.people[0]}</div>
-      <div class="member">{this.people[1]}</div>
-    </div>
-    )
+        <h2>Registered Members</h2>
+        <div class="member">{people[0]}</div>
+        <div class="member">{people[1]}</div>
+      </div>
+    );
   }
 }
 
